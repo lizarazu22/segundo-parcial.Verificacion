@@ -42,7 +42,39 @@ public class TodoLyTest {
         Response createProyectResponse =ReastAssured .given()
         .header("Token",token)
         .contentType("applicaction/json")
-        .body("{\"Content\":\\""+projectName + "\"}" )
+        .body("{\"Content\":\""+projectName + "\"}" )
+        .post("https://todp.ly/api/projects.json");
+
+        if (createProyectResponse.getStatusCode()=200){
+            System.out.println("PROYECTO CREADO");
+
+        }else{
+            System.out.println("no se creo el proyecto");
+            return;
+        }
+        Response deleteTpkenResponse = ReastAssured.given()
+        .header("Token", token)
+        .delete("https://todo.ly/api/authentication/token.json");
+
+        if (deleteTpkenResponse.getStatusCode()==200){
+            System.out.println("token eliminado")
+        }else{
+            System.out.println("no se elimino")
+            return;
+        }
+
+        Response createProyectResponse2 = ReastAssured.given()
+        .header("Token",token)
+        .contentType("applicaction/json")
+        .body("{\"Content\":\"Segundo proyecto \"}" )
+        .post("https://todp.ly/api/projects.json");
+
+        if(createProyectResponse2.getStatusCode==401){
+            System.out.println("no se pudo crear el segundo proyecto")
+        }else{
+            System.out.println("se creo el segundo proyecto ")
+        }
+
 
 
     }
