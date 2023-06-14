@@ -29,6 +29,15 @@ public class TodoLyTest{
         WebElement loginButton =driver.findElemente(By.cssSelector("submit btn"));
         loginButton.click();
 
-        webElement projectNameField = driver.findElemente()
+        webElement projectNameField = driver.findElemente(By.cssSelector("agenda add"));
+        addProjectButton.click();
+
+        webElement projectNameField= dirver.findElemente(By.cssSelector(""));
+        projectNameField.sendKeys("nuevo projecto");
+
+        webElement createProyectButton = driver.findElemente(By.cssSelector(""));
+        createProyectButton.click();
+
+        driver.quit();
     }
 }
