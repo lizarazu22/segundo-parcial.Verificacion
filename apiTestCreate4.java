@@ -26,6 +26,23 @@ public class TodoLyTest{
         .body("{\"Content\":\""+content + "\"}" )
         .post("https://todp.ly/api/pitems.json");
 
-        if (response.getStatusCode()==200)
+        if (response.getStatusCode()==200){
+            System.out.println("Item creado"+ content);
+        }else{
+            System.out.println("no se creo el item"+ content);
+
+        }
+    }
+
+    private static void deleteAllItems(String token){
+        Response response = RestAssured.given()
+        .header("Token",token)
+        .delete("https:todo.ly/api/items.json");
+
+        if (response.getStatusCode()==200){
+            System.out.println("se elimino todo");
+        }else{
+            System.out.println("no se elimino");
+        }
     }
 }
